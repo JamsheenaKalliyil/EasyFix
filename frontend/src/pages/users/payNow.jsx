@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { BASE_URL } from "../../utils/urls";
-import "./PayNow.css";
+import "./payNow.css";
 
 const PayNow = () => {
   const { id } = useParams();
