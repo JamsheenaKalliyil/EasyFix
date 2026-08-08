@@ -1,0 +1,115 @@
+.walletPageContainer {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f6fa;
+}
+
+.walletCardBox {
+  width: 380px;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.walletTitle {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.walletBalanceBox {
+  background: #222;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.walletBalanceLabel {
+  font-size: 14px;
+  margin: 0;
+}
+
+.walletBalanceAmount {
+  font-size: 32px;
+  margin: 8px 0 0;
+}
+
+.walletAddMoneySection {
+  margin-top: 25px;
+}
+
+.walletSectionTitle {
+  font-size: 18px;
+}
+
+.walletMoneyInput {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+.walletAddButton {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #16a34a;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.walletAddButton:hover {
+  opacity: 0.9;
+}
+
+.walletHistoryButton {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.walletHistoryBox {
+  margin-top: 20px;
+}
+
+.walletHistoryTitle {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.walletTransactionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.walletTransactionType {
+  margin: 0;
+  font-weight: 600;
+}
+
+.walletTransactionDate {
+  font-size: 12px;
+  color: gray;
+}
+
+.walletTransactionAmount {
+  color: green;
+  font-weight: bold;
+}

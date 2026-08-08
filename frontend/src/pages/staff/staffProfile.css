@@ -1,0 +1,76 @@
+.staff-profile-container {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  margin-left: 18%;
+}
+
+.staff-profile-card {
+  width: 100%;
+  max-width: 1000px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 40px;
+  padding: 30px;
+}
+
+.staff-image-section {
+  width: 280px;
+  text-align: center;
+}
+
+.staff-photo {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #0d6efd;
+}
+
+.staff-image-section h2 {
+  margin-top: 20px;
+}
+
+.staff-image-section p {
+  color: #666;
+}
+
+.staff-details {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.detail {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.detail label {
+  display: block;
+  color: #777;
+  font-size: 14px;
+}
+
+.detail p {
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .staff-profile-card {
+    flex-direction: column;
+  }
+
+  .staff-image-section {
+    width: 100%;
+  }
+
+  .staff-details {
+    grid-template-columns: 1fr;
+  }
+}

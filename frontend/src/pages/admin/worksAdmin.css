@@ -1,0 +1,77 @@
+.works-admin {
+  width: 80%;
+  margin-left: 20%;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.filters input,
+.filters select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Normal screen */
+.work-table-container {
+  width: 100%;
+}
+
+.work-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.work-table th,
+.work-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* Button */
+.assign-btn {
+  padding: 7px 14px;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+}
+
+/* =========================
+   950px and below
+========================= */
+
+@media (max-width: 950px) {
+  .work-table-container {
+    overflow-x: auto;
+  }
+
+  .work-table {
+    min-width: 850px;
+  }
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 600px) {
+  .works-admin {
+    width: 100%;
+    margin-left: 0;
+    padding: 15px;
+  }
+
+  .filters {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,277 @@
+/* ===========================
+   PAGE
+=========================== */
+
+.userOrder-page {
+  min-height: 100vh;
+  background: #f4f7fb;
+  padding: 40px 20px;
+  margin-left: 22%;
+}
+
+.userOrder-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 40px;
+}
+
+/* ===========================
+   EMPTY STATE
+=========================== */
+
+.userOrder-empty {
+  max-width: 500px;
+  margin: 80px auto;
+  background: #fff;
+  padding: 50px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.userOrder-empty h3 {
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.userOrder-empty p {
+  color: #6b7280;
+}
+
+/* ===========================
+   CONTAINER
+=========================== */
+
+.userOrder-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.userOrder-card {
+  display: flex;
+  gap: 25px;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.userOrder-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* ===========================
+   IMAGE
+=========================== */
+
+.userOrder-image {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* ===========================
+   DETAILS
+=========================== */
+
+.userOrder-details {
+  flex: 1;
+  padding: 25px;
+}
+
+.userOrder-service-name {
+  margin: 0 0 18px;
+  font-size: 24px;
+  color: #1e293b;
+}
+
+.userOrder-text {
+  margin: 10px 0;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.userOrder-text strong {
+  color: #111827;
+}
+
+/* ===========================
+   STATUS
+=========================== */
+
+.userOrder-status-wrapper {
+  margin: 20px 0;
+}
+
+.userOrder-status,
+.userOrder-payment-status {
+  display: inline-block;
+  margin: 6px 0;
+  padding: 8px 18px;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Order Status */
+
+.userOrder-status.pending {
+  background: #f59e0b;
+}
+
+.userOrder-status.assigned {
+  background: #a2f51c;
+}
+
+.userOrder-status.completed {
+  background: #2110b9;
+}
+
+.userOrder-status.cancelled {
+  background: #ef4444;
+}
+
+/* Payment Status */
+
+.userOrder-payment-status.pending {
+  background: #f59e0b;
+}
+
+.userOrder-payment-status.paid {
+  background: #10b981;
+}
+
+.userOrder-payment-status.failed {
+  background: #ef4444;
+}
+
+/* ===========================
+   STAFF INFO
+=========================== */
+
+.userOrder-assigned-info {
+  margin-top: 20px;
+  padding: 18px;
+  background: #eff6ff;
+  border-left: 5px solid #2563eb;
+  border-radius: 10px;
+}
+
+.userOrder-assigned-info p {
+  margin: 8px 0;
+  color: #334155;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.userOrder-actions {
+  margin-top: 25px;
+}
+
+.userOrder-cancel-btn,
+.userOrder-paynow-btn,
+.userOrder-invoice-btn,
+.userOrder-retry-btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.userOrder-cancel-btn {
+  background: #ef4444;
+}
+
+.userOrder-cancel-btn:hover {
+  background: #dc2626;
+}
+
+.userOrder-paynow-btn {
+  background: #2563eb;
+}
+
+.userOrder-paynow-btn:hover {
+  background: #ebecf0;
+}
+
+.userOrder-invoice-btn {
+  background: #4006ad;
+}
+
+.userOrder-invoice-btn:hover {
+  background: #edfaf6;
+  color: #4006ad;
+}
+
+.userOrder-retry-btn {
+  background: #e230bc;
+}
+
+.userOrder-retry-btn:hover {
+  background: #e7e4eb;
+  color: pink;
+}
+
+/* ===========================
+   LOADING
+=========================== */
+
+.userOrder-loading {
+  text-align: center;
+  margin-top: 120px;
+  font-size: 30px;
+  color: #2563eb;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 768px) {
+  .userOrder-card {
+    flex-direction: column;
+  }
+
+  .userOrder-image {
+    width: 100%;
+    height: 220px;
+  }
+
+  .userOrder-details {
+    padding: 20px;
+  }
+
+  .userOrder-title {
+    font-size: 28px;
+  }
+
+  .userOrder-service-name {
+    font-size: 22px;
+  }
+
+  .userOrder-cancel-btn,
+  .userOrder-paynow-btn,
+  .userOrder-invoice-btn,
+  .userOrder-retry-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,161 @@
+.assigned-container {
+  padding: 25px;
+  margin-left: 18%;
+}
+
+.assigned-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.works-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.works-table th {
+  background: #0d6efd;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.works-table td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.works-table tr:hover {
+  background: #f8f9fa;
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status.StaffAssigned {
+  background: #0d6efd;
+}
+
+.status.InProgress {
+  background: #fd7e14;
+}
+
+.status.Completed {
+  background: #198754;
+}
+
+.status.Cancelled {
+  background: #dc3545;
+}
+
+.view-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #198754;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.view-btn:hover {
+  background: #157347;
+}
+
+.disabled-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #6c757d;
+  color: white;
+}
+.closed-btn {
+  background: #a31679;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: default;
+  font-weight: 500;
+}
+
+.closed-btn:hover {
+  background: #15803d;
+}
+
+.loading,
+.no-data {
+  text-align: center;
+  margin-top: 40px;
+  color: #666;
+  font-size: 18px;
+}
+.closed-btn {
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: default;
+}
+
+.upcoming-btn {
+  background: #f59e0b;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+.view-btn {
+  background: #2563eb;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 600;
+}
+.not-completed-btn {
+  background: #dc2626;
+  color: #fff;
+}
+
+.view-btn:hover {
+  background: #1d4ed8;
+  color: #fff;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .assigned-container {
+    padding: 15px;
+  }
+
+  .works-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .works-table th,
+  .works-table td {
+    padding: 12px;
+  }
+}

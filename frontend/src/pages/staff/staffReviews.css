@@ -1,0 +1,45 @@
+.staff-reviews {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  margin-left: 20%;
+}
+
+.review-row {
+  border-bottom: 1px solid #ddd;
+  padding: 18px 0;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top h4 {
+  margin: 0;
+}
+
+.top span {
+  color: #777;
+  font-size: 14px;
+}
+
+.service {
+  color: #555;
+  margin: 8px 0;
+  font-weight: 600;
+}
+
+.rating {
+  display: flex;
+  gap: 3px;
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+.comment {
+  color: #444;
+  line-height: 1.5;
+  margin: 0;
+}

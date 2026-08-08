@@ -1,0 +1,249 @@
+.serviceDetailsContainer {
+  max-width: 1100px;
+  margin: auto;
+  margin-top: 5%;
+  padding: 30px;
+}
+
+.serviceCard {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.serviceImage {
+  width: 420px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.serviceInfo {
+  flex: 1;
+}
+
+.bookBtn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 6px;
+  background: #0d6efd;
+  color: white;
+  cursor: pointer;
+}
+
+.detailsSection {
+  margin-top: 40px;
+}
+
+.detailsSection h2 {
+  margin-bottom: 15px;
+}
+
+.reviewCard {
+  margin-top: 15px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.relatedCard {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+}
+
+.relatedCard img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.relatedCard button {
+  margin-top: 10px;
+  padding: 8px 15px;
+}
+.moreServices {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.serviceBox {
+  width: 250px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  background: #fff;
+  transition: 0.3s;
+}
+
+.serviceBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.serviceBox img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.serviceBox h4 {
+  margin: 15px 0 8px;
+  text-transform: capitalize;
+}
+
+.serviceBox p {
+  font-weight: 600;
+  color: #0d6efd;
+  margin-bottom: 12px;
+}
+
+.serviceBox button {
+  margin-bottom: 15px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 5px;
+  background: #0d6efd;
+  color: white;
+  cursor: pointer;
+}
+
+.serviceButton {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.orderBtn,
+.viewBtn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.orderBtn {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.orderBtn:hover {
+  background-color: #0b5ed7;
+}
+
+.viewBtn {
+  background-color: #fff;
+  color: #0d6efd;
+  border: 2px solid #0d6efd;
+}
+
+.viewBtn:hover {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+/*moresection*/
+
+.moreSections {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2%;
+}
+
+.imageContainer {
+  position: relative;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.favoriteBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  background: black !important;
+}
+
+.favoriteBtn:hover {
+  transform: scale(1.1);
+}
+
+.favoriteIcon {
+  font-size: 20px;
+  color: #777;
+}
+
+.active {
+  color: #e63946;
+}
+
+.favoriteButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+.favoriteButton {
+  background:white !important;
+  color: black;
+
+}
+@media (max-width: 1100px) {
+  .moreSections {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .serviceButton {
+    flex-direction: column;
+  }
+  .moreSections {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .moreSections .serviceBox {
+    width: 100%;
+  }
+}
