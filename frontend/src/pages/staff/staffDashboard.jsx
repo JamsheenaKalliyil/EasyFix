@@ -87,7 +87,7 @@ const StaffDashboard = () => {
         <div className="summary-grid">
           <div>
             <span>Total Works</span>
-            <h4>{staff?.completedWorks || 0}</h4>
+            <h4>{dashboard?.totalWorks || 0}</h4>
           </div>
 
           <div>
