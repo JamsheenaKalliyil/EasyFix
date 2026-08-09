@@ -202,7 +202,7 @@ const userController = {
       const resend = new Resend(process.env.RESEND_API_KEY);
 
       const { data, error } = await resend.emails.send({
-        from: `EasyFix <${process.env.EMAIL_USER}>`,
+        from: "EasyFix <onboarding@resend.dev>",
         to: [email],
         subject: "EasyFix OTP Verification",
         text: `Your OTP is ${otp}.
