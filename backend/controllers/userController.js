@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 // const transporter = require("../config/nodmailer");
-import { Resend } from "resend";
+const { Resend } =require('resend')
 
 const userController = {
   signup: async (req, res) => {
