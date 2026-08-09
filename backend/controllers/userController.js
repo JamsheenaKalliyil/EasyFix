@@ -212,7 +212,7 @@ const userController = {
 
       const { data, error } = await resend.emails.send({
         from: "EasyFix <onboarding@resend.dev>",
-        to: "jamsheenalezin8@gmail.com",
+        to: process.env.EMAIL_USER,
         subject: "EasyFix OTP Verification",
         text: `Your OTP is ${otp}.
   It is valid for 1 minute.`,
