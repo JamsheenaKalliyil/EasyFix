@@ -2,8 +2,6 @@ const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
-// const transporter = require("../config/nodmailer");
-const { Resend } =require('resend')
 
 const userController = {
   signup: async (req, res) => {
@@ -171,69 +169,69 @@ const userController = {
   // },
 
   sendOtp: async (req, res) => {
-  try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    const { email } = req.body;
+    try {
+      const { Resend } = await import("resend");
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const { email } = req.body;
 
-    if (!email) {
-      return res.status(400).json({
-        message: "Email is required",
-      });
-    }
+      if (!email) {
+        return res.status(400).json({
+          message: "Email is required",
+        });
+      }
 
-    const user = await User.findOne({ email });
+      const user = await User.findOne({ email });
 
-    if (!user) {
-      return res.status(404).json({
-        message: "Email does not exist",
-      });
-    }
+      if (!user) {
+        return res.status(404).json({
+          message: "Email does not exist",
+        });
+      }
 
-    // Generate 6 digit OTP
-    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+      // Generate 6 digit OTP
+      const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-    console.log("Generated OTP:", otp);
+      console.log("Generated OTP:", otp);
 
-    // Save OTP and expiry time
-    user.otp = otp;
-    user.otpExpires = new Date(Date.now() + 60 * 1000);
+      // Save OTP and expiry time
+      user.otp = otp;
+      user.otpExpires = new Date(Date.now() + 60 * 1000);
 
-    await user.save();
+      await user.save();
 
-    // Send OTP using Resend
-    const { data, error } = await resend.emails.send({
-      from: "EasyFix <onboarding@resend.dev>",
-      to: [email],
-      subject: "EasyFix OTP Verification",
-      text: `Your OTP is ${otp}.
+      // Send OTP using Resend
+      const { data, error } = await resend.emails.send({
+        from: "EasyFix <onboarding@resend.dev>",
+        to: [email],
+        subject: "EasyFix OTP Verification",
+        text: `Your OTP is ${otp}.
 It is valid for 1 minute.`,
-    });
+      });
 
-    if (error) {
-      console.log("Resend Error:", error);
+      if (error) {
+        console.log("Resend Error:", error);
+
+        return res.status(500).json({
+          success: false,
+          message: "Failed to send OTP",
+        });
+      }
+
+      console.log("Email sent:", data);
+
+      return res.status(200).json({
+        success: true,
+        message: "OTP sent successfully",
+      });
+    } catch (error) {
+      console.log("Send OTP Error:", error);
 
       return res.status(500).json({
         success: false,
-        message: "Failed to send OTP",
+        message: "Internal server error",
       });
     }
-
-    console.log("Email sent:", data);
-
-    return res.status(200).json({
-      success: true,
-      message: "OTP sent successfully",
-    });
-
-  } catch (error) {
-    console.log("Send OTP Error:", error);
-
-    return res.status(500).json({
-      success: false,
-      message: "Internal server error",
-    });
-  }
-},
+  },
   verifyOtp: async (req, res) => {
     try {
       const { email, otp } = req.body;
