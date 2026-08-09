@@ -170,8 +170,6 @@ const userController = {
 
   sendOtp: async (req, res) => {
     try {
-      const { Resend } = await import("resend");
-      const resend = new Resend(process.env.RESEND_API_KEY);
       const { email } = req.body;
 
       if (!email) {
@@ -199,9 +197,12 @@ const userController = {
 
       await user.save();
 
-      // Send OTP using Resend
+      // Resend
+      const { Resend } = await import("resend");
+      const resend = new Resend(process.env.RESEND_API_KEY);
+
       const { data, error } = await resend.emails.send({
-        from: "EasyFix <onboarding@resend.dev>",
+        from: `EasyFix <${process.env.EMAIL_USER}>`,
         to: [email],
         subject: "EasyFix OTP Verification",
         text: `Your OTP is ${otp}.
@@ -232,6 +233,7 @@ It is valid for 1 minute.`,
       });
     }
   },
+
   verifyOtp: async (req, res) => {
     try {
       const { email, otp } = req.body;
