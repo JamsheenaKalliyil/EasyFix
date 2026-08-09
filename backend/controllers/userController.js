@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 
 const userController = {
   signup: async (req, res) => {
@@ -59,6 +60,14 @@ const userController = {
           message: "User Blocked",
         });
       }
+
+      const isMatch = await bcrypt.compare(password, user.password);
+
+      if (!isMatch) {
+        return res.status(401).json({
+          message: "Invalid email or password",
+        });
+      }
       const payload = {
         id: user._id,
         name: user.name,
@@ -107,6 +116,68 @@ const userController = {
       });
     }
   },
+  // sendOtp: async (req, res) => {
+  //   try {
+  //     const { email } = req.body;
+
+  //     if (!email) {
+  //       return res.status(400).json({
+  //         message: "Email is required",
+  //       });
+  //     }
+
+  //     const user = await User.findOne({ email });
+
+  //     if (!user) {
+  //       return res.status(404).json({
+  //         message: "Email does not exist",
+  //       });
+  //     }
+
+  //     // Generate 6 digit OTP
+  //     const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+  //     console.log("Generated OTP:", otp);
+
+  //     // Save OTP and expiry time
+  //     user.otp = otp;
+  //     user.otpExpires = new Date(Date.now() + 60 * 1000);
+
+  //     await user.save();
+
+  //     const transporter = nodemailer.createTransport({
+  //       service: "gmail",
+  //       port: 587,
+  //       secure: false,
+  //       requireTLS: true,
+  //       auth: {
+  //         user: process.env.EMAIL_USER,
+  //         pass: process.env.EMAIL_PASS,
+  //       },
+  //     });
+
+  //     await transporter.sendMail({
+  //       from: process.env.EMAIL_USER,
+  //       to: email,
+  //       subject: "EasyFix OTP Verification",
+  //       text: `Your OTP is ${otp}.
+  //           It is valid for 1 minute.`,
+  //     });
+
+  //     return res.status(200).json({
+  //       success: true,
+  //       message: "OTP sent successfully",
+  //     });
+  //   } catch (error) {
+  //     console.log("Send OTP Error:", error);
+
+  //     return res.status(500).json({
+  //       success: false,
+  //       message: "Internal server error",
+  //     });
+  //   }
+  // },
+
   sendOtp: async (req, res) => {
     try {
       const { email } = req.body;
@@ -136,24 +207,27 @@ const userController = {
 
       await user.save();
 
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        port: 587,
-        secure: false,
-        requireTLS: true,
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
-      });
+      // Resend
+      const resend = new Resend(process.env.RESEND_API_KEY);
 
-      await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: email,
+      const { data, error } = await resend.emails.send({
+        from: "EasyFix <onboarding@resend.dev>",
+        to: "jamsheenalezin8@gmail.com",
         subject: "EasyFix OTP Verification",
         text: `Your OTP is ${otp}.
-            It is valid for 1 minute.`,
+  It is valid for 1 minute.`,
       });
+
+      if (error) {
+        console.log("Resend Error:", error);
+
+        return res.status(500).json({
+          success: false,
+          message: "Failed to send OTP",
+        });
+      }
+
+      console.log("Email sent:", data);
 
       return res.status(200).json({
         success: true,
@@ -168,72 +242,6 @@ const userController = {
       });
     }
   },
-
-  //   sendOtp: async (req, res) => {
-  //     try {
-  //       const { email } = req.body;
-
-  //       if (!email) {
-  //         return res.status(400).json({
-  //           message: "Email is required",
-  //         });
-  //       }
-
-  //       const user = await User.findOne({ email });
-
-  //       if (!user) {
-  //         return res.status(404).json({
-  //           message: "Email does not exist",
-  //         });
-  //       }
-
-  //       // Generate 6 digit OTP
-  //       const otp = Math.floor(100000 + Math.random() * 900000).toString();
-
-  //       console.log("Generated OTP:", otp);
-
-  //       // Save OTP and expiry time
-  //       user.otp = otp;
-  //       user.otpExpires = new Date(Date.now() + 60 * 1000);
-
-  //       await user.save();
-
-  //       // Resend
-  //       const { Resend } = await import("resend");
-  //       const resend = new Resend(process.env.RESEND_API_KEY);
-
-  //       const { data, error } = await resend.emails.send({
-  //         from: "EasyFix <onboarding@resend.dev>",
-  //         to: "jamsheenalezin8@gmail.com",
-  //         subject: "EasyFix OTP Verification",
-  //         text: `Your OTP is ${otp}.
-  // It is valid for 1 minute.`,
-  //       });
-
-  //       if (error) {
-  //         console.log("Resend Error:", error);
-
-  //         return res.status(500).json({
-  //           success: false,
-  //           message: "Failed to send OTP",
-  //         });
-  //       }
-
-  //       console.log("Email sent:", data);
-
-  //       return res.status(200).json({
-  //         success: true,
-  //         message: "OTP sent successfully",
-  //       });
-  //     } catch (error) {
-  //       console.log("Send OTP Error:", error);
-
-  //       return res.status(500).json({
-  //         success: false,
-  //         message: "Internal server error",
-  //       });
-  //     }
-  //   },
 
   verifyOtp: async (req, res) => {
     try {
