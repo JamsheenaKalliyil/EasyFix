@@ -136,22 +136,46 @@ const userController = {
 
       await user.save();
 
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
-      });
+      // const transporter = nodemailer.createTransport({
+      //   service: "gmail",
+      //   auth: {
+      //     user: process.env.EMAIL_USER,
+      //     pass: process.env.EMAIL_PASS,
+      //   },
+      // });
 
-      await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: email,
+      // await transporter.sendMail({
+      //   from: process.env.EMAIL_USER,
+      //   to: email,
+      //   subject: "EasyFix OTP Verification",
+      //   text: `Your OTP is ${otp}.
+      //       It is valid for 1 minute.`,
+      // });
+
+      // Resend start
+
+      const { Resend } = await import("resend");
+      const resend = new Resend(process.env.RESEND_API_KEY);
+
+      const { data, error } = await resend.emails.send({
+        from: "EasyFix <onboarding@resend.dev>",
+        to: "jamsheenalezin8@gmail.com",
         subject: "EasyFix OTP Verification",
         text: `Your OTP is ${otp}.
-            It is valid for 1 minute.`,
+  It is valid for 1 minute.`,
       });
 
+      if (error) {
+        console.log("Resend Error:", error);
+
+        return res.status(500).json({
+          success: false,
+          message: "Failed to send OTP",
+        });
+      }
+
+      console.log("Email sent:", data);
+      //resend end
       return res.status(200).json({
         success: true,
         message: "OTP sent successfully",

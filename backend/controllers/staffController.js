@@ -348,6 +348,12 @@ const staffController = {
         status: "Completed",
       });
 
+       //total Work
+
+       const totalWorks = await Work.countDocuments({
+        staff: staff._id,
+        
+      });
       // Salary
       const salary = await Salary.findOne({
         staff: staff._id,
@@ -364,7 +370,7 @@ const staffController = {
           experience: staff.experience,
           salary: staff.salary, // from Staff model
           salaryStatus: salary?.status || "Pending", // from Salary model
-
+           totalWorks,
           todayWorks,
           completedWorks,
           completedWorks,

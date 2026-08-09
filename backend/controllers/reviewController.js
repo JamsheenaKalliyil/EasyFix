@@ -105,7 +105,7 @@ const reviewController = {
         .populate("user", "name")
         .sort({ createdAt: -1 })
         .limit(3);
-      console.log("review", reviews);
+
       res.status(200).json(reviews);
     } catch (error) {
       res.status(500).json({
