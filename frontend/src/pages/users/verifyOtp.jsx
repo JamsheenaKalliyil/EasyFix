@@ -68,6 +68,7 @@ const VerifyOtp = () => {
         email,
       });
 
+      formik.setFieldValue("otp", "");
       setTimeLeft(60);
 
       Swal.fire({

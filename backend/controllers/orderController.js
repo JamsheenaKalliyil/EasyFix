@@ -281,7 +281,7 @@ const orderController = {
         .populate("service")
         .populate("staff")
         .populate("user")
-        .sort({ preferredDate: 1 });
+        .sort({ preferredDate: -1 });
 
       res.status(200).json({
         orders,
