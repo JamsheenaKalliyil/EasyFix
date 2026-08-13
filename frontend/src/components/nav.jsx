@@ -125,62 +125,85 @@ const Navbar = () => {
         >
           <ul className="navbar-nav mx-auto gap-5">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link
+                className="nav-link"
+                to="/"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu"
+              >
                 Home
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/services">
+              <Link
+                className="nav-link"
+                to="/services"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu"
+              >
                 Services
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              <Link
+                className="nav-link"
+                to="/about"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu"
+              >
                 About
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/T&C">
+              <Link
+                className="nav-link"
+                to="/T&C"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu"
+              >
                 T&C
               </Link>
             </li>
 
-             <div className="nav-buttons-inNav">
-          {user ? (
-            <>
-              {user.role === "admin" ? (
-                <Link to="/admin" className="btn btn-outline-primary">
-                  Admin Dashboard
-                </Link>
-              ) : user.role === "staff" ? (
-                <Link to="/staff" className="btn btn-outline-primary">
-                  Staff Dashboard
-                </Link>
+            <div className="nav-buttons-inNav">
+              {user ? (
+                <>
+                  {user.role === "admin" ? (
+                    <Link to="/admin" className="btn btn-outline-primary">
+                      Admin Dashboard
+                    </Link>
+                  ) : user.role === "staff" ? (
+                    <Link to="/staff" className="btn btn-outline-primary">
+                      Staff Dashboard
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/user-profile"
+                      className="btn btn-outline-primary"
+                    >
+                      Profile
+                    </Link>
+                  )}
+
+                  <button className="btn btn-danger" onClick={handleLogout}>
+                    Sign Out
+                  </button>
+                </>
               ) : (
-                <Link to="/user-profile" className="btn btn-outline-primary">
-                  Profile
-                </Link>
+                <>
+                  <Link to="/signin" className="btn btn-outline-primary">
+                    Sign In
+                  </Link>
+
+                  <Link to="/signup" className="btn btn-primary">
+                    Sign Up
+                  </Link>
+                </>
               )}
-
-              <button className="btn btn-danger" onClick={handleLogout}>
-                Sign Out
-              </button>
-            </>
-          ) : (
-            <>
-              <Link to="/signin" className="btn btn-outline-primary">
-                Sign In
-              </Link>
-
-              <Link to="/signup" className="btn btn-primary">
-                Sign Up
-              </Link>
-            </>
-          )}
-        </div>
+            </div>
           </ul>
         </div>
         {/* Buttons */}

@@ -68,7 +68,8 @@ const VerifyOtp = () => {
         email,
       });
 
-      formik.setFieldValue("otp", "");
+      // formik.setFieldValue("otp", "");
+      formik.resetForm();
       setTimeLeft(60);
 
       Swal.fire({
