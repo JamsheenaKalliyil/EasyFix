@@ -13,7 +13,6 @@
   left: 0;
   z-index: 1000;
   width: 100%;
-  
 }
 
 /* Logo */
@@ -92,7 +91,9 @@
   border-radius: 25px;
   padding: 7px 18px;
 }
-
+.nav-buttons-inNav {
+  display: none;
+}
 /* Mobile */
 @media (max-width: 991px) {
   .navbar-nav {
@@ -103,6 +104,18 @@
   .navbar-nav .nav-item {
     margin: 8px 0;
   }
+  .nav-buttons-inNav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
 
- 
+  .nav-buttons-inNav .btn {
+    border-radius: 25px;
+    padding: 7px 18px;
+  }
+  .nav-buttons {
+    display: none;
+  }
 }

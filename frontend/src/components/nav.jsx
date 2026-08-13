@@ -147,6 +147,40 @@ const Navbar = () => {
                 T&C
               </Link>
             </li>
+
+             <div className="nav-buttons-inNav">
+          {user ? (
+            <>
+              {user.role === "admin" ? (
+                <Link to="/admin" className="btn btn-outline-primary">
+                  Admin Dashboard
+                </Link>
+              ) : user.role === "staff" ? (
+                <Link to="/staff" className="btn btn-outline-primary">
+                  Staff Dashboard
+                </Link>
+              ) : (
+                <Link to="/user-profile" className="btn btn-outline-primary">
+                  Profile
+                </Link>
+              )}
+
+              <button className="btn btn-danger" onClick={handleLogout}>
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/signin" className="btn btn-outline-primary">
+                Sign In
+              </Link>
+
+              <Link to="/signup" className="btn btn-primary">
+                Sign Up
+              </Link>
+            </>
+          )}
+        </div>
           </ul>
         </div>
         {/* Buttons */}
