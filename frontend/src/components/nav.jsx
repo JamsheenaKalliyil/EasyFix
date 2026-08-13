@@ -125,45 +125,25 @@ const Navbar = () => {
         >
           <ul className="navbar-nav mx-auto gap-5">
             <li className="nav-item">
-              <Link
-                className="nav-link"
-                to="/"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarMenu"
-              >
+              <Link className="nav-link" to="/">
                 Home
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link
-                className="nav-link"
-                to="/services"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarMenu"
-              >
+              <Link className="nav-link" to="/services">
                 Services
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link
-                className="nav-link"
-                to="/about"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarMenu"
-              >
+              <Link className="nav-link" to="/about">
                 About
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link
-                className="nav-link"
-                to="/T&C"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarMenu"
-              >
+              <Link className="nav-link" to="/T&C">
                 T&C
               </Link>
             </li>
